@@ -12,25 +12,21 @@ class Trap extends Error {
 }
 
 function shape(op: number): [number, number, number] | null {
-  if (op === 0) return [0, 0, 0];
+  if (op === 0 || op === 0x34) return [0, 0, 0];
   if (op === 1) return [1, 0, 1];
   if (op === 2) return [4, 0, 1];
-  if (op === 3) return [0, 1, 0];
+  if (op === 3 || op === 0x53) return [0, 1, 0];
   if (op === 4) return [0, 1, 2];
   if (op === 5) return [0, 2, 2];
   if (op === 6) return [0, 2, 3];
   if (op === 7) return [0, 3, 3];
   if (op >= 0x10 && op <= 0x22 && op !== 0x17 && op !== 0x1b) return [0, 2, 1];
-  if (op === 0x17 || op === 0x1b) return [0, 1, 1];
-  if (op === 0x30) return [2, 0, 0];
+  if (op === 0x17 || op === 0x1b || op === 0x40) return [0, 1, 1];
+  if (op === 0x30 || op === 0x33) return [2, 0, 0];
   if (op === 0x31 || op === 0x32) return [2, 1, 0];
-  if (op === 0x33) return [2, 0, 0];
-  if (op === 0x34) return [0, 0, 0];
-  if (op === 0x40) return [0, 1, 1];
   if (op === 0x41) return [0, 2, 0];
   if (op === 0x50 || op === 0x51) return [0, 1, 0];
   if (op === 0x52) return [0, 0, 1];
-  if (op === 0x53) return [0, 1, 0];
   return null;
 }
 
